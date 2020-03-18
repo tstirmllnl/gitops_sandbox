@@ -1,0 +1,11 @@
+---
+# tasks file for busybox
+- name: Start busybox
+  debug: msg="Starting busybox"
+
+
+- name: deploy busybox
+  k8s:
+    state: present
+    definition: "{{ lookup('template', 'pod.yml.j2') }}"
+    namespace: default
